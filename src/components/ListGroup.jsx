@@ -1,21 +1,25 @@
 import React, { useState } from "react";
 
-const ListGroup = () => {
-  const [cityList, setCityList] = useState([
-    "Sukkur",
-    "Shikarpur",
-    "Larkana",
-    "Rohri",
-  ]);
+const ListGroup = ({cityList, heading}) => {
+  // const [cityList, setCityList] = useState([
+  //   "Sukkur",
+  //   "Shikarpur",
+  //   "Larkana",
+  //   "Rohri",
+  //   "Karachi",
+  //   "Lahore",
+  //   "Islamabad",
+  //   "Quetta",
+  //   "Peshawar",
+  // ]);
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
-  const handleClick = () => {
-    console.log("Clicked");
-    const cityStartingWithS = cityList.filter(
-      (item) => item.charAt(0) === "S"
-    );
-    setCityList(cityStartingWithS);
-  };
+  
+
+  // const handleClick = () => {
+  //   const cityStartingWithS = cityList.filter((item) => item.charAt(0) === "S");
+  //   setCityList(cityStartingWithS);
+  // };
 
   const listItem = cityList.map((item, index) => (
     <li
@@ -31,11 +35,11 @@ const ListGroup = () => {
 
   return (
     <div>
-      <h1>List</h1>
+      <h1>{heading}</h1>
       <ul className="list-group">{listItem}</ul>
-      <button className="btn btn-warning mt-5" onClick={handleClick}>
+      {/* <button className="btn btn-warning mt-5" onClick={handleClick}>
         Cities Starting With Letter S
-      </button>
+      </button> */}
     </div>
   );
 };
