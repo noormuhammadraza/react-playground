@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const ListGroup = ({ cityList, heading, onSelect }) => {
   // const [cityList, setCityList] = useState([
