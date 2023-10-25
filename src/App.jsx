@@ -16,9 +16,11 @@ const App = () => {
     "Peshawar",
   ];
 
+  const handleSelect = (item) => console.log(item);
+
   return (
     <>
-      <ListGroup cityList={cityList} heading="Cities" />
+      <ListGroup cityList={cityList} heading="Cities" onSelect={handleSelect} />
     </>
   );
 };

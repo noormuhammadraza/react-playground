@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const ListGroup = ({cityList, heading}) => {
+const ListGroup = ({ cityList, heading, onSelect }) => {
   // const [cityList, setCityList] = useState([
   //   "Sukkur",
   //   "Shikarpur",
@@ -14,8 +14,6 @@ const ListGroup = ({cityList, heading}) => {
   // ]);
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
-  
-
   // const handleClick = () => {
   //   const cityStartingWithS = cityList.filter((item) => item.charAt(0) === "S");
   //   setCityList(cityStartingWithS);
@@ -27,7 +25,10 @@ const ListGroup = ({cityList, heading}) => {
       className={
         selectedIndex === index ? "list-group-item active" : "list-group-item"
       }
-      onClick={() => setSelectedIndex(index)}
+      onClick={() => {
+        setSelectedIndex(index);
+        onSelect(item);
+      }}
     >
       {item}
     </li>
