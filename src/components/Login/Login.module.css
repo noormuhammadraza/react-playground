@@ -2,3 +2,7 @@
     background-color: lightpink;
     border: 1px solid black;
 }
+
+.maxHeight {
+    height: 100vh;
+}

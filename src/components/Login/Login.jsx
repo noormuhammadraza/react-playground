@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Login.css";
+import styles from "./Login.module.css";
 import Alert from "../Alert";
 
 const Login = ({ onClick }) => {
@@ -23,7 +23,7 @@ const Login = ({ onClick }) => {
   
 
   return (
-    <div className="main">
+    <div className={[styles.main, styles.maxHeight].join(" ")}>
       <h1>Welcome to Metaverse</h1>
       <label>
         Username
