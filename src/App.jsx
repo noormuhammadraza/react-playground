@@ -1,14 +1,14 @@
 import Counter from "./components/Counter";
 import ListGroup from "./components/ListGroup";
-import ListFilter from "./components/ListFilter";
+import MidExam from "./components/MidExam";
 import Alert from "./components/Alert";
 import ShowAlertButton from "./components/ShowAlertButton";
 import { useState } from "react";
 import Login from "./components/Login";
 
 const App = () => {
-  const [alertVisibility, setAlertVisibility] = useState(false);
-  const [alertMessage, setAlertMessage] = useState("");
+  // const [alertVisibility, setAlertVisibility] = useState(false);
+  // const [alertMessage, setAlertMessage] = useState("");
 
   // const cityList = [
   //   "Sukkur",
@@ -24,15 +24,15 @@ const App = () => {
 
   // const handleSelect = (item) => console.log(item);
 
-  const onClick = (alertMessage) => {
-    if (alertMessage === "Successful") {
-      setAlertMessage(alertMessage);
-      setAlertVisibility(true);
-    } else {
-      setAlertMessage(alertMessage);
-      setAlertVisibility(true);
-    }
-  };
+  // const onClick = (alertMessage) => {
+  //   if (alertMessage === "Successful") {
+  //     setAlertMessage(alertMessage);
+  //     setAlertVisibility(true);
+  //   } else {
+  //     setAlertMessage(alertMessage);
+  //     setAlertVisibility(true);
+  //   }
+  // };
 
   return (
     <>
@@ -42,12 +42,14 @@ const App = () => {
       )}
       <ShowAlertButton onClick={() => setAlertVisibility(true)} /> */}
       {/* <Counter/> */}
-      {alertVisibility && (
+      {/* {alertVisibility && (
         <Alert onClose={() => setAlertVisibility(false)}>
           Login {alertMessage}
         </Alert>
       )}
-      <Login onClick={onClick} />
+      <Login onClick={onClick} /> */}
+
+      <MidExam/>
     </>
   );
 };
