@@ -4,9 +4,10 @@ import ListFilter from "./components/ListFilter";
 import Alert from "./components/Alert";
 import ShowAlertButton from "./components/ShowAlertButton";
 import { useState } from "react";
+import Login from "./components/Login";
 
 const App = () => {
-  // const [alertVisibility, setAlertVisibility] = useState(false);
+  const [alertVisibility, setAlertVisibility] = useState(false);
 
   // const cityList = [
   //   "Sukkur",
@@ -25,13 +26,13 @@ const App = () => {
   return (
     <>
       {/* <ListGroup cityList={cityList} heading="Cities" onSelect={handleSelect} /> */}
-      {/* <Alert message={"This is an Alert"}/> */}
       {/* {alertVisibility && (
         <Alert onClose={() => setAlertVisibility(false)}>My Alert</Alert>
       )}
       <ShowAlertButton onClick={() => setAlertVisibility(true)} /> */}
-
-      <Counter/>
+      {/* <Counter/> */}
+      {alertVisibility && <Alert onClose={() => setAlertVisibility(false)}>Login Successful</Alert>}
+      <Login onClick={() => setAlertVisibility(true)}/>
     </>
   );
 };
