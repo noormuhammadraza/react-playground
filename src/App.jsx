@@ -8,6 +8,7 @@ import Login from "./components/Login";
 
 const App = () => {
   const [alertVisibility, setAlertVisibility] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
 
   // const cityList = [
   //   "Sukkur",
@@ -23,6 +24,16 @@ const App = () => {
 
   // const handleSelect = (item) => console.log(item);
 
+  const onClick = (alertMessage) => {
+    if (alertMessage === "Successful") {
+      setAlertMessage(alertMessage);
+      setAlertVisibility(true);
+    } else {
+      setAlertMessage(alertMessage);
+      setAlertVisibility(true);
+    }
+  };
+
   return (
     <>
       {/* <ListGroup cityList={cityList} heading="Cities" onSelect={handleSelect} /> */}
@@ -31,8 +42,12 @@ const App = () => {
       )}
       <ShowAlertButton onClick={() => setAlertVisibility(true)} /> */}
       {/* <Counter/> */}
-      {alertVisibility && <Alert onClose={() => setAlertVisibility(false)}>Login Successful</Alert>}
-      <Login onClick={() => setAlertVisibility(true)}/>
+      {alertVisibility && (
+        <Alert onClose={() => setAlertVisibility(false)}>
+          Login {alertMessage}
+        </Alert>
+      )}
+      <Login onClick={onClick} />
     </>
   );
 };

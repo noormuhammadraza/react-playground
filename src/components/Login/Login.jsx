@@ -13,10 +13,10 @@ const Login = ({ onClick }) => {
 
   const handleClick = () => {
     if (username === "Mrnoobhere" && password === "enigma") {
-        onClick();
+        onClick("Successful");
     }
     else {
-        console.log("Incorrect Username or Password")
+        onClick("Failed")
     }
   }
 

@@ -1,7 +1,7 @@
 const Alert = ({ children, onClose }) => {
   return (
     <>
-      <div className="alert alert-info alert-dismissible">
+      <div className="alert alert-primary alert-dismissible">
         {children}
         <button
           onClick={onClose}
