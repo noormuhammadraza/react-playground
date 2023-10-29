@@ -42,12 +42,7 @@ const ListFilter = () => {
       occupation: "Doctor",
     },
 
-    { id: 6,
-      name: "Eva Davis",
-      age: 22,
-      city: "Miami",
-      occupation: "Artist"
-    },
+    { id: 6, name: "Eva Davis", age: 22, city: "Miami", occupation: "Artist" },
 
     {
       id: 7,
@@ -86,15 +81,14 @@ const ListFilter = () => {
 
   const handleChange = (event) => {
     const { name, type, value } = event.target;
-    console.log(id)
     type === "number" && setId(value);
   };
 
   const handleClick = () => {
-    const filteredItems = data.filter((item) => id === item.id);
-    console.log(filteredItems)
-    // setData(filteredItems)
-  }
+    const filteredItems = data.filter((item) => item.id === parseInt(id, 10));
+    console.log(filteredItems);
+    setData(filteredItems);
+  };
 
   const table = data.map((item) => (
     <tr key={item.id}>
@@ -122,6 +116,7 @@ const ListFilter = () => {
           <tbody>{table}</tbody>
         </table>
       </div>
+
       <div>
         <input
           type="number"
