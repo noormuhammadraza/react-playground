@@ -76,17 +76,19 @@ const ListFilter = () => {
       occupation: "Entrepreneur",
     },
   ]);
-
   const [id, setId] = useState(1);
+  const [name, setName] = useState("");
 
   const handleChange = (event) => {
     const { name, type, value } = event.target;
-    type === "number" && setId(value);
+    type === "number" ? setId(value) : setName(value);
   };
 
   const handleClick = () => {
-    const filteredItems = data.filter((item) => item.id === parseInt(id, 10));
-    console.log(filteredItems);
+    const filteredItems = data.filter(
+      (item) => item.id === parseInt(id, 10) || item.name === name
+    );
+    // console.log(filteredItems);
     setData(filteredItems);
   };
 
@@ -118,14 +120,21 @@ const ListFilter = () => {
       </div>
 
       <div>
-        <input
-          type="number"
-          name="id"
-          min={1}
-          max={10}
-          value={id}
-          onChange={handleChange}
-        />
+        <label>
+          Enter ID:
+          <input
+            type="number"
+            name="id"
+            min={1}
+            max={10}
+            value={id}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Enter Name:
+          <input type="text" name="name" value={name} onChange={handleChange} />
+        </label>
         <button onClick={handleClick}>Search</button>
       </div>
     </>
