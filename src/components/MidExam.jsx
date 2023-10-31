@@ -76,20 +76,38 @@ const ListFilter = () => {
       occupation: "Entrepreneur",
     },
   ]);
-  const [id, setId] = useState(1);
-  const [name, setName] = useState("");
+  const [id, setId] = useState(data[0].id);
+  const [name, setName] = useState(data[0].name);
+  const [age, setAge] = useState(data[0].age);
+  const [city, setCity] = useState(data[0].city);
+  const [occupation, setOccupation] = useState(data[0].occupation);
 
   const handleChange = (event) => {
     const { name, type, value } = event.target;
-    type === "number" ? setId(value) : setName(value);
+    if (name === "id") {
+      setId(value);
+    } else if (name === "name") {
+      setName(value);
+    } else if (name === "age") {
+      setAge(value);
+    } else if (name === "city") {
+      setCity(value);
+    } else {
+      setOccupation(value);
+    }
   };
 
   const handleClick = () => {
     const filteredItems = data.filter(
-      (item) => item.id === parseInt(id, 10) || item.name === name
+      (item) =>
+        item.id === parseInt(id, 10) ||
+        item.name === name ||
+        item.age === parseInt(age, 10) ||
+        item.city === city ||
+        item.occupation === occupation
     );
-    // console.log(filteredItems);
     setData(filteredItems);
+    // console.log(filteredItems);
   };
 
   const table = data.map((item) => (
@@ -119,7 +137,7 @@ const ListFilter = () => {
         </table>
       </div>
 
-      <div>
+      <div className="mt-3">
         <label>
           Enter ID:
           <input
@@ -135,7 +153,26 @@ const ListFilter = () => {
           Enter Name:
           <input type="text" name="name" value={name} onChange={handleChange} />
         </label>
-        <button onClick={handleClick}>Search</button>
+        <label>
+          Enter Age:
+          <input type="number" name="age" value={age} onChange={handleChange} />
+        </label>
+        <label>
+          Enter City:
+          <input type="text" name="city" value={city} onChange={handleChange} />
+        </label>
+        <label>
+          Enter Occupation:
+          <input
+            type="text"
+            name="occupation"
+            value={occupation}
+            onChange={handleChange}
+          />
+        </label>
+        <button className="btn btn-primary m-2" onClick={handleClick}>
+          Search
+        </button>
       </div>
     </>
   );
