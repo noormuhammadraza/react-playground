@@ -91,7 +91,7 @@ const ListFilter = () => {
 
   const occupations = data.map((item) => item.occupation);
   const occupationOptions = occupations.map((item, index) => (
-    <option key={index} value={city}>
+    <option key={index} value={item}>
       {item}
     </option>
   ));
@@ -131,7 +131,11 @@ const ListFilter = () => {
         item.occupation === occupation
     );
     setData(filteredItems);
-    // console.log(filteredItems);
+  };
+
+  const errorCheck = () => {
+    console.log(cityOptions);
+    console.log(occupationOptions);
   };
 
   return (
@@ -174,7 +178,7 @@ const ListFilter = () => {
         <label>
           Enter City:
           {/* <input type="text" name="city" value={city} onChange={handleChange} /> */}
-          <select onChange={handleChange} name="city" id="city">
+          <select onChange={handleChange} name="city" id="city" value={city}>
             {cityOptions}
           </select>
         </label>
@@ -186,7 +190,12 @@ const ListFilter = () => {
             value={occupation}
             onChange={handleChange}
           /> */}
-          <select name="occupation" id="occupation">
+          <select
+            onChange={handleChange}
+            name="occupation"
+            id="occupation"
+            value={occupation}
+          >
             {occupationOptions}
           </select>
         </label>
