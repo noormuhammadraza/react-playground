@@ -82,6 +82,30 @@ const ListFilter = () => {
   const [city, setCity] = useState(data[0].city);
   const [occupation, setOccupation] = useState(data[0].occupation);
 
+  const cities = data.map((item) => item.city);
+  const cityOptions = cities.map((item, index) => (
+    <option key={index} value={item}>
+      {item}
+    </option>
+  ));
+
+  const occupations = data.map((item) => item.occupation);
+  const occupationOptions = occupations.map((item, index) => (
+    <option key={index} value={city}>
+      {item}
+    </option>
+  ));
+
+  const table = data.map((item) => (
+    <tr key={item.id}>
+      <td>{item.id}</td>
+      <td>{item.name}</td>
+      <td>{item.age}</td>
+      <td>{item.city}</td>
+      <td>{item.occupation}</td>
+    </tr>
+  ));
+
   const handleChange = (event) => {
     const { name, type, value } = event.target;
     if (name === "id") {
@@ -100,7 +124,7 @@ const ListFilter = () => {
   const handleClick = () => {
     const filteredItems = data.filter(
       (item) =>
-        item.id === parseInt(id, 10) ||
+        // item.id === parseInt(id, 10) ||
         item.name === name ||
         item.age === parseInt(age, 10) ||
         item.city === city ||
@@ -109,16 +133,6 @@ const ListFilter = () => {
     setData(filteredItems);
     // console.log(filteredItems);
   };
-
-  const table = data.map((item) => (
-    <tr key={item.id}>
-      <td>{item.id}</td>
-      <td>{item.name}</td>
-      <td>{item.age}</td>
-      <td>{item.city}</td>
-      <td>{item.occupation}</td>
-    </tr>
-  ));
 
   return (
     <>
@@ -138,7 +152,7 @@ const ListFilter = () => {
       </div>
 
       <div className="mt-3">
-        <label>
+        {/* <label>
           Enter ID:
           <input
             type="number"
@@ -148,7 +162,7 @@ const ListFilter = () => {
             value={id}
             onChange={handleChange}
           />
-        </label>
+        </label> */}
         <label>
           Enter Name:
           <input type="text" name="name" value={name} onChange={handleChange} />
@@ -159,16 +173,22 @@ const ListFilter = () => {
         </label>
         <label>
           Enter City:
-          <input type="text" name="city" value={city} onChange={handleChange} />
+          {/* <input type="text" name="city" value={city} onChange={handleChange} /> */}
+          <select onChange={handleChange} name="city" id="city">
+            {cityOptions}
+          </select>
         </label>
         <label>
           Enter Occupation:
-          <input
+          {/* <input
             type="text"
             name="occupation"
             value={occupation}
             onChange={handleChange}
-          />
+          /> */}
+          <select name="occupation" id="occupation">
+            {occupationOptions}
+          </select>
         </label>
         <button className="btn btn-primary m-2" onClick={handleClick}>
           Search
