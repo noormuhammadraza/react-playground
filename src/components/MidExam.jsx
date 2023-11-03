@@ -59,12 +59,11 @@ const ListFilter = ({ tableData }) => {
       setData(filteredItems);
     } else {
       setData(tableData);
+      setName(tableData[0].name);
+      setAge(tableData[0].age);
+      setCity(tableData[0].city);
+      setOccupation(tableData[0].occupation);
     }
-  };
-
-  const errorCheck = () => {
-    console.log(cityOptions);
-    console.log(occupationOptions);
   };
 
   return (
