@@ -1,82 +1,8 @@
 import { useState } from "react";
 
-const ListFilter = () => {
-  const [data, setData] = useState([
-    {
-      id: 1,
-      name: "John Doe",
-      age: 25,
-      city: "New York",
-      occupation: "Engineer",
-    },
+const ListFilter = ({ tableData }) => {
+  const [data, setData] = useState(tableData);
 
-    {
-      id: 2,
-      name: "Jane Smith",
-      age: 30,
-      city: "San Francisco",
-      occupation: "Designer",
-    },
-
-    {
-      id: 3,
-      name: "Bob Johnson",
-      age: 28,
-      city: "Chicago",
-      occupation: "Accountant",
-    },
-
-    {
-      id: 4,
-      name: "Alice Brown",
-      age: 35,
-      city: "Los Angeles",
-      occupation: "Teacher",
-    },
-
-    {
-      id: 5,
-      name: "Charlie Wilson",
-      age: 40,
-      city: "Houston",
-      occupation: "Doctor",
-    },
-
-    { id: 6, name: "Eva Davis", age: 22, city: "Miami", occupation: "Artist" },
-
-    {
-      id: 7,
-      name: "Frank Miller",
-      age: 32,
-      city: "Seattle",
-      occupation: "Software Engineer",
-    },
-
-    {
-      id: 8,
-      name: "Grace Taylor",
-      age: 45,
-      city: "Boston",
-      occupation: "Lawyer",
-    },
-
-    {
-      id: 9,
-      name: "Henry Clark",
-      age: 28,
-      city: "Denver",
-      occupation: "Marketing Manager",
-    },
-
-    {
-      id: 10,
-      name: "Ivy Adams",
-      age: 33,
-      city: "Atlanta",
-      occupation: "Entrepreneur",
-    },
-  ]);
-  const [id, setId] = useState(data[0].id);
   const [name, setName] = useState(data[0].name);
   const [age, setAge] = useState(data[0].age);
   const [city, setCity] = useState(data[0].city);
@@ -121,16 +47,19 @@ const ListFilter = () => {
     }
   };
 
-  const handleClick = () => {
-    const filteredItems = data.filter(
-      (item) =>
-        // item.id === parseInt(id, 10) ||
-        item.name === name ||
-        item.age === parseInt(age, 10) ||
-        item.city === city ||
-        item.occupation === occupation
-    );
-    setData(filteredItems);
+  const handleClick = (event) => {
+    if (event.target.name === "search") {
+      const filteredItems = data.filter(
+        (item) =>
+          item.name === name ||
+          item.age === parseInt(age, 10) ||
+          item.city === city ||
+          item.occupation === occupation
+      );
+      setData(filteredItems);
+    } else {
+      setData(tableData);
+    }
   };
 
   const errorCheck = () => {
@@ -156,17 +85,6 @@ const ListFilter = () => {
       </div>
 
       <div className="mt-3">
-        {/* <label>
-          Enter ID:
-          <input
-            type="number"
-            name="id"
-            min={1}
-            max={10}
-            value={id}
-            onChange={handleChange}
-          />
-        </label> */}
         <label>
           Enter Name:
           <input type="text" name="name" value={name} onChange={handleChange} />
@@ -177,19 +95,12 @@ const ListFilter = () => {
         </label>
         <label>
           Enter City:
-          {/* <input type="text" name="city" value={city} onChange={handleChange} /> */}
           <select onChange={handleChange} name="city" id="city" value={city}>
             {cityOptions}
           </select>
         </label>
         <label>
           Enter Occupation:
-          {/* <input
-            type="text"
-            name="occupation"
-            value={occupation}
-            onChange={handleChange}
-          /> */}
           <select
             onChange={handleChange}
             name="occupation"
@@ -199,8 +110,19 @@ const ListFilter = () => {
             {occupationOptions}
           </select>
         </label>
-        <button className="btn btn-primary m-2" onClick={handleClick}>
+        <button
+          name="search"
+          className="btn btn-primary m-2"
+          onClick={handleClick}
+        >
           Search
+        </button>
+        <button
+          name="reset"
+          className="btn btn-warning m-2"
+          onClick={handleClick}
+        >
+          Reset
         </button>
       </div>
     </>
