@@ -7,6 +7,7 @@ import { useState } from "react";
 import Login from "./components/Login";
 
 const App = () => {
+  // State passed to MidExam Component as Props
   const [data, setData] = useState([
     {
       id: 1,
