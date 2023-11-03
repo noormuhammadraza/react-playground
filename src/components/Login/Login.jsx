@@ -13,14 +13,11 @@ const Login = ({ onClick }) => {
 
   const handleClick = () => {
     if (username === "Mrnoobhere" && password === "enigma") {
-        onClick("Successful");
+      onClick("Successful");
+    } else {
+      onClick("Failed");
     }
-    else {
-        onClick("Failed")
-    }
-  }
-
-  
+  };
 
   return (
     <div className={[styles.main, styles.maxHeight].join(" ")}>
@@ -48,7 +45,9 @@ const Login = ({ onClick }) => {
       <p>
         <a href="#">Forgot Password?</a>
       </p>
-      <button onClick={handleClick}>Login</button>
+      <button className={styles.button} onClick={handleClick}>
+        Login
+      </button>
     </div>
   );
 };
