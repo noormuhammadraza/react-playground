@@ -45,7 +45,7 @@ const Login = ({ onClick }) => {
       <p>
         <a href="#">Forgot Password?</a>
       </p>
-      <button className={styles.button} onClick={handleClick}>
+      <button className={styles.btn} onClick={handleClick}>
         Login
       </button>
     </div>
