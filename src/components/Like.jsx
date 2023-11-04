@@ -6,15 +6,13 @@ const Like = ({ onClick }) => {
 
   const handleClick = () => {
     onClick();
-    setClicked((prev) => !prev);
+    setClicked(!clicked);
   };
 
-  return (
-    <div>
-      {!clicked && <AiOutlineHeart onClick={handleClick} size={50} />}
-      {clicked && <AiFillHeart onClick={handleClick} size={50} color="red" />}
-    </div>
-  );
+  if (clicked) {
+    return <AiFillHeart onClick={handleClick} size={50} color="red" />;
+  }
+  return <AiOutlineHeart onClick={handleClick} size={50} />;
 };
 
 export default Like;
