@@ -5,6 +5,7 @@ import Alert from "./components/Alert";
 import ShowAlertButton from "./components/ShowAlertButton";
 import { useState } from "react";
 import Login from "./components/Login";
+import Like from "./components/Like";
 
 const App = () => {
   // State passed to MidExam Component as Props
@@ -84,9 +85,11 @@ const App = () => {
     },
   ]);
 
-  const [alertVisibility, setAlertVisibility] = useState(false);
-  const [alertMessage, setAlertMessage] = useState("");
+  // For Login and Alert Components
+  // const [alertVisibility, setAlertVisibility] = useState(false);
+  // const [alertMessage, setAlertMessage] = useState("");
 
+  // For ListGroup Component
   // const cityList = [
   //   "Sukkur",
   //   "Shikarpur",
@@ -99,18 +102,21 @@ const App = () => {
   //   "Peshawar",
   // ];
 
-  const onClick = (alertMessage) => {
-    if (alertMessage === "Successful") {
-      setAlertMessage(alertMessage);
-      setAlertVisibility(true);
-    } else {
-      setAlertMessage(alertMessage);
-      setAlertVisibility(true);
-    }
-  };
+  // For Alert Component
+  // const onClick = (alertMessage) => {
+  //   if (alertMessage === "Successful") {
+  //     setAlertMessage(alertMessage);
+  //     setAlertVisibility(true);
+  //   } else {
+  //     setAlertMessage(alertMessage);
+  //     setAlertVisibility(true);
+  //   }
+  // };
 
   return (
     <>
+      <Like onClick={() => console.log("Clicked")} />
+
       {/* <ListGroup cityList={cityList} heading="Cities" onSelect={handleSelect} /> */}
 
       {/* {alertVisibility && (
@@ -120,12 +126,12 @@ const App = () => {
 
       {/* <Counter /> */}
 
-      {alertVisibility && (
+      {/* {alertVisibility && (
         <Alert onClose={() => setAlertVisibility(false)}>
           Login {alertMessage}
         </Alert>
       )}
-      <Login onClick={onClick} />
+      <Login onClick={onClick} /> */}
 
       {/* <MidExam tableData={data} /> */}
     </>
