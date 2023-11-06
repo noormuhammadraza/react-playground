@@ -92,8 +92,17 @@ const App = () => {
     },
   });
 
+  const [pizza, setPizza] = useState({
+    name: "Spicy Pepperoni",
+    toppings: ["Mushroom"],
+  });
+
   const handleClick = () => {
-    setGame({ ...game, player: { ...game.player, name: "Mrnoobhere" } });
+    // setGame({ ...game, player: { ...game.player, name: "Mrnoobhere" } });
+    setPizza({
+      ...pizza,
+      toppings: [...pizza.toppings, "Cheese"],
+    });
   };
 
   // For Login and Alert Components
@@ -126,8 +135,13 @@ const App = () => {
 
   return (
     <>
-      <h1>{game.player.name}</h1>
-      <button onClick={handleClick}>Click here to change name</button>
+      {/* <h1>{game.player.name}</h1> */}
+      <ul>
+        {pizza.toppings.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+      <button onClick={handleClick}>Click here to add a topping</button>
 
       {/* <Like onClick={() => console.log("Clicked")} /> */}
 
