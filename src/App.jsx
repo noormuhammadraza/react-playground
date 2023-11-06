@@ -97,11 +97,35 @@ const App = () => {
     toppings: ["Mushroom"],
   });
 
+  const [cart, setCart] = useState({
+    discount: 0.1,
+    items: [
+      {
+        id: 1,
+        title: "Product 1",
+        quantity: 1,
+      },
+      {
+        id: 2,
+        title: "Product 2",
+        quantity: 1,
+      },
+    ],
+  });
+
   const handleClick = () => {
     // setGame({ ...game, player: { ...game.player, name: "Mrnoobhere" } });
-    setPizza({
-      ...pizza,
-      toppings: [...pizza.toppings, "Cheese"],
+
+    // setPizza({
+    //   ...pizza,
+    //   toppings: [...pizza.toppings, "Cheese"],
+    // });
+
+    setCart({
+      ...cart,
+      items: cart.items.map((item) =>
+        item.id === 1 ? { ...item, quantity: item.quantity + 1 } : item
+      ),
     });
   };
 
@@ -136,12 +160,19 @@ const App = () => {
   return (
     <>
       {/* <h1>{game.player.name}</h1> */}
-      <ul>
+
+      {/* <ul>
         {pizza.toppings.map((item) => (
           <li key={item}>{item}</li>
         ))}
-      </ul>
-      <button onClick={handleClick}>Click here to add a topping</button>
+      </ul> */}
+      <h1>ID = {cart.items[0].id}</h1>
+      <h1>Title = {cart.items[0].title}</h1>
+      <h1>Quantity = {cart.items[0].quantity}</h1>
+
+      <button onClick={handleClick}>
+        Click here to increase the quantity by 1
+      </button>
 
       {/* <Like onClick={() => console.log("Clicked")} /> */}
 
